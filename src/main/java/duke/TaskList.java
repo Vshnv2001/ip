@@ -87,7 +87,8 @@ public class TaskList {
 
     }
 
-    public String findTasksByKeyword(String keyword, UI ui) {
+
+    public String findTasksByKeyword(UI ui, String ... keywords) {
         TaskList keywordTaskList = new TaskList();
         for (Task task : this.list) {
             String taskDesc = task.description;
