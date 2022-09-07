@@ -74,17 +74,13 @@ public class Duke extends Application{
         this.scrollPane = new ScrollPane();
         this.dialogContainer = new VBox();
         this.scrollPane.setContent(this.dialogContainer);
-
         this.userInput = new TextField();
         this.sendButton = new Button("Send");
-
         AnchorPane mainLayout = new AnchorPane();
 
         // Add the Nodes to the AnchorPane
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
-
         this.scene = new Scene(mainLayout);
-
         stage.setScene(this.scene);
         stage.show();
         
@@ -92,24 +88,17 @@ public class Duke extends Application{
         this.styleStage(stage);
 
         mainLayout.setPrefSize(685, 535);
-
         dialogContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
-
         userInput.setPrefWidth(525.0);
         sendButton.setPrefWidth(55.0);
 
-
         // Set Dimensions for ScrollPane
         this.styleScrollPane(scrollPane);
-
         AnchorPane.setTopAnchor(scrollPane, 1.0);
-
         AnchorPane.setBottomAnchor(sendButton, 1.0);
         AnchorPane.setRightAnchor(sendButton, 1.0);
-
         AnchorPane.setLeftAnchor(userInput , 1.0);
         AnchorPane.setBottomAnchor(userInput, 1.0);
-
         ImageView dukeImage = new ImageView(duke);
 
         // Begin by greeting the user.
@@ -126,7 +115,6 @@ public class Duke extends Application{
         this.userInput.setOnAction((event) -> {
             handleUserInput();
         });
-
     }
 
     private void handleUserInput() {
@@ -159,11 +147,9 @@ public class Duke extends Application{
                 return null;
             }
         }
-        
     }
 
     private void readTaskFile() {
-
         // Read file with tasks if it exists, else create a new one.
         File taskFile = new File("./data/duke.txt");
         if (taskFile.exists()) {

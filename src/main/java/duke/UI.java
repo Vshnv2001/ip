@@ -5,7 +5,7 @@ public class UI {
      * Initial Greet Method for Duke.
      * @return String with greet message
      */
-    public String greet(){
+    protected String greet(){
         String greeting = "Hello! I'm Duke \n" 
                         + "What can I do for you? \n" ;
         
@@ -15,7 +15,7 @@ public class UI {
     /*
      * UI for exit message for the bot.
      */
-    public String exit(){
+    protected String exit(){
         String bye = "Bye. Hope to see you again soon!";
         return bye;
     }

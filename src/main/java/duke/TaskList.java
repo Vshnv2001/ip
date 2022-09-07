@@ -7,7 +7,7 @@ public class TaskList {
     /*
      * Constructor for class TaskList.
      */
-    public TaskList() {
+    protected TaskList() {
         this.list = new ArrayList<>();
     }
 
@@ -30,7 +30,7 @@ public class TaskList {
      * getter for task objects in the list. 
      * @return List<Task>
      */
-    public List<Task> getTaskList() {
+    protected List<Task> getTaskList() {
         return this.list;
     }
 
@@ -39,7 +39,7 @@ public class TaskList {
      * @param number the order of the task
      * @param ui the UI Object that prints messages to the console
      */
-    public String markAsDone(int number, UI ui){
+    protected String markAsDone(int number, UI ui){
         Task item = list.get(number - 1);
         item.mark();
         
@@ -52,7 +52,7 @@ public class TaskList {
      * @param number the order of the list to be removed
      * @param ui the UI object that prints to screen
      */
-    public String deleteFromList(int number, UI ui) {
+    protected String deleteFromList(int number, UI ui) {
         Task removed = list.remove(number - 1);
         return ui.rmvMsg(removed, list.size());
     }
@@ -62,12 +62,10 @@ public class TaskList {
      * @param number the index of the task to be unmarked
      * @param ui the UI Object that prints to screen
      */
-    public String unmarkTask(int number, UI ui) {
+    protected String unmarkTask(int number, UI ui) {
         Task item = list.get(number - 1);
-        item.unmark();
-        
+        item.unmark();        
         list.set(number - 1, item);
-
         return ui.unmarkedMsg(item);
     }
 
@@ -75,7 +73,7 @@ public class TaskList {
         this.list.add(newTask);
     }
 
-    public String addToList(String item, UI ui){
+    protected String addToList(String item, UI ui){
         try {
             Task newTask = new Task(item);
             list.add(newTask);
@@ -87,7 +85,7 @@ public class TaskList {
 
     }
 
-    public String findTasksByKeyword(String keyword, UI ui) {
+    protected String findTasksByKeyword(String keyword, UI ui) {
         TaskList keywordTaskList = new TaskList();
         for (Task task : this.list) {
             String taskDesc = task.description;

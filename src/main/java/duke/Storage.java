@@ -6,14 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class Storage {
 
     /*
      * reads file that stores the existing tasks and parses it.
      * @return Task<List> list of tasks read from duke.txt
      */
-    public TaskList taskListReader(){
+    protected TaskList taskListReader(){
         File taskFile = new File("./data/duke.txt");
         TaskList taskList = new TaskList();
         try (Scanner input = new Scanner(taskFile)) {
@@ -39,7 +38,7 @@ public class Storage {
      * Writes the existing list of tasks back into duke.txt.
      * @param taskList the existing list of tasks
      */
-    public void taskListWriter(TaskList taskList) {
+    protected void taskListWriter(TaskList taskList) {
         File taskFile = new File("./data/duke.txt");
         String taskString = getTaskString(taskList);
         try {
@@ -52,7 +51,6 @@ public class Storage {
         }
 
     }
-
 
     private String getTaskString(TaskList taskList) {
         String tasks = "";

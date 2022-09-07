@@ -11,7 +11,7 @@ public class DialogBox extends HBox{
     private Label text;
     private ImageView displayPicture;
 
-    public DialogBox(Label text, ImageView imageView){
+    protected DialogBox(Label text, ImageView imageView){
         this.text = text;
         this.displayPicture = imageView;
 
@@ -25,11 +25,11 @@ public class DialogBox extends HBox{
 
     }
 
-    public static DialogBox getUserDialog(Label text, ImageView userImage) {
+    protected static DialogBox getUserDialog(Label text, ImageView userImage) {
         return new DialogBox(text, userImage);
     }
 
-    public static DialogBox getDukeDialog(Label text, ImageView dukeImage) {
+    protected static DialogBox getDukeDialog(Label text, ImageView dukeImage) {
         DialogBox dialogBox = new DialogBox(text, dukeImage);
         dialogBox.flip();
         return dialogBox;
