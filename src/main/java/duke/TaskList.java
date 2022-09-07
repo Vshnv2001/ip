@@ -21,6 +21,7 @@ public class TaskList {
         int index = 1;
         for (Task item : list) {
             itemString += String.valueOf(index) + ". " + item.toString() + "\n";
+            assert list.indexOf(item) + 1 == index : "Serial number of list should be one more than its array index";
             index++;
         }
         return itemString;
@@ -53,7 +54,10 @@ public class TaskList {
      * @param ui the UI object that prints to screen
      */
     public String deleteFromList(int number, UI ui) {
+        int lengthBeforeDelete = this.getListLength();
         Task removed = list.remove(number - 1);
+        int lengthAfterDelete = this.getListLength();
+        assert lengthBeforeDelete - 1 == lengthAfterDelete : "Length of the List must have decreased by 1";
         return ui.rmvMsg(removed, list.size());
     }
 
@@ -63,10 +67,11 @@ public class TaskList {
      * @param ui the UI Object that prints to screen
      */
     public String unmarkTask(int number, UI ui) {
+        int lengthBeforeUnmark = this.getListLength();
         Task item = list.get(number - 1);
         item.unmark();
-        
-        list.set(number - 1, item);
+        int lengthAfterUnmark = this.getListLength();
+        assert lengthBeforeUnmark == lengthAfterUnmark : "Length before and After Unmark must be same";
 
         return ui.unmarkedMsg(item);
     }
@@ -77,9 +82,12 @@ public class TaskList {
 
     public String addToList(String item, UI ui){
         try {
+            int prevListSize = list.size();
             Task newTask = new Task(item);
             list.add(newTask);
             int listSize = list.size();
+
+            assert prevListSize + 1 == listSize : "List Size should have incremented by 1";
             return ui.addToListMsg(listSize, newTask);
         } catch (Exception e) {
             return e.getMessage();
@@ -100,6 +108,10 @@ public class TaskList {
 
         }
         return ui.printList(keywordTaskList);
+    }
+
+    protected int getListLength() {
+        return this.list.size();
     }
 
 }
