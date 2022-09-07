@@ -91,10 +91,14 @@ public class TaskList {
     public String findTasksByKeyword(UI ui, String ... keywords) {
         TaskList keywordTaskList = new TaskList();
         for (Task task : this.list) {
+            boolean hasBeenAdded = false;
             String taskDesc = task.description;
-            if (taskDesc.contains(keyword)) {
-                keywordTaskList.list.add(task);
-            } 
+            for (String keyword : keywords) {
+                if (taskDesc.contains(keyword) && !hasBeenAdded) {
+                    keywordTaskList.list.add(task);
+                    hasBeenAdded = false;
+                } 
+            }
         }
         return ui.printList(keywordTaskList);
     }
