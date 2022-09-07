@@ -15,7 +15,7 @@ public class Parser {
             int number = Integer.parseInt(command.split(" ")[1]);
             return taskList.deleteFromList(number, ui);
         } else if (command.split(" ")[0].toLowerCase().equals("find")) {
-            String keyword = command.split(" ")[0];
+            String keyword = command.split(" ")[1];
             return taskList.findTasksByKeyword(keyword, ui);
         } else {
             return taskList.addToList(command, ui);
